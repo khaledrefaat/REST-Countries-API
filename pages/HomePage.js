@@ -1,4 +1,5 @@
 import CssLoader from '../services/CssLoader.js';
+
 import {
   $,
   createElement,
@@ -25,6 +26,15 @@ export class HomePage extends HTMLElement {
         country.name.toLowerCase().includes(name.toLowerCase())
       );
   }
+
+  debounce = (fn, delay) => {
+    let timeOut;
+    return e => {
+      const name = e.target.value;
+      clearTimeout(timeOut);
+      timeOut = setTimeout(() => fn(this.filterByName(name)), delay);
+    };
+  };
 
   renderFilterContainer() {
     const filterContainer = createElement('div');
@@ -69,13 +79,13 @@ export class HomePage extends HTMLElement {
       $('.select-items', this.root).classList.toggle('show-list');
     });
 
-    $('.form-control input', this.root).addEventListener('input', e => {
-      if (e.target.value === '') this.renderCountryCards(app.store.countries);
-      else this.renderCountryCards(this.filterByName(e.target.value));
-    });
+    $('.form-control input', this.root).addEventListener(
+      'input',
+      this.debounce(this.renderCountryCards, 500)
+    );
   }
 
-  renderCountryCards(countries) {
+  renderCountryCards = countries => {
     const countryCards = $('.country-cards', this.root);
     countryCards.innerHTML = '';
 
@@ -92,7 +102,7 @@ export class HomePage extends HTMLElement {
       $('.country-capital span', content).textContent = capital;
       countryCards.appendChild(content);
     });
-  }
+  };
 
   connectedCallback() {
     const countryCards = createElement('div');
