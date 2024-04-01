@@ -5,7 +5,7 @@ export default class CssLoader {
     this.root.appendChild(this.styles);
   }
 
-  async CssLoader(cssFilePath) {
+  async loadCss(cssFilePath) {
     try {
       const request = await fetch(cssFilePath);
       const text = await request.text();
