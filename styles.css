@@ -10,7 +10,8 @@
   --background-light: #fff;
   --background-color: #fafafa;
   --heading-color: #16191c;
-  --text-color: #a5a7a6;
+  --text-color: #424443;
+  --shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .dark-mode {

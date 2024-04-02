@@ -93,7 +93,15 @@ export class HomePage extends HTMLElement {
       const countryTemplate = $('#country-card');
       const content = countryTemplate.content.cloneNode(true);
 
-      $('a', content).href = `/country/${name.replaceAll(' ', '-')}`;
+      const link = $('a', content);
+
+      link.href = `/country/${name.replaceAll(' ', '-')}`;
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const url = link.getAttribute('href');
+        app.router.go(url);
+      });
+
       $('.country__img', content).src = flag;
       $('h3', content).textContent = name;
       $('.country-population span', content).textContent =
@@ -110,9 +118,6 @@ export class HomePage extends HTMLElement {
     this.renderFilterContainer();
     this.root.appendChild(countryCards);
 
-    document.addEventListener('countriesChanged', () => {
-      console.log(app.store.countries + ' Change in eventListener');
-    });
     if (app.store && app.store.countries)
       this.renderCountryCards(app.store.countries);
   }

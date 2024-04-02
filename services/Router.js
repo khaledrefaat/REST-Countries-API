@@ -3,7 +3,7 @@ import { $, createElement } from '../utils/helperFunctions.js';
 const Router = {
   init() {
     window.addEventListener('popstate', event => {
-      if (event.state) this.go.route(event.state.route, false);
+      if (event.state) this.go(event.state.route, false);
     });
     this.go(location.pathname);
   },
@@ -18,9 +18,8 @@ const Router = {
       default:
         pageElement = createElement('country-page');
     }
-
     const cache = $('main');
-    cache.innerHtml = '';
+    cache.innerHTML = '';
     cache.appendChild(pageElement);
   },
 };

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,8 +14,8 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </script>
 
-    <script src="./app.js" defer type="module"></script>
-    <title>Rest Countries API</title>
+    <script src="/app.js" defer type="module"></script>
+    <title>Frontend Mentor | Rest Countries API</title>
 </head>
 
 <body>
@@ -42,6 +42,36 @@
                     <p class="country-capital"><strong>capital: </strong><span></span></p>
                 </div>
             </a>
+        </div>
+    </template>
+
+    <template id="country-details">
+        <div class="container">
+            <a href="/"><ion-icon name="arrow-back-outline"></ion-icon> Back</a>
+            <div class="country">
+                <img class="country__img" />
+                <div class="content">
+                    <h2></h2>
+                    <div class="content-details">
+                        <div>
+                            <div class="native-name"><strong>Native Name: </strong><span></span></div>
+                            <div class="population"><strong>Population: </strong><span></span></div>
+                            <div class="region"><strong>Region: </strong><span></span></div>
+                            <div class="sub-region"><strong>sub region: </strong><span></span></div>
+                            <div class="capital"><strong>Capital: </strong><span></span></div>
+                        </div>
+                        <div>
+                            <div class="top-level"><strong>Top Level Domain: </strong><span></span></div>
+                            <div class="currency"><strong>Currencies: </strong><span></span></div>
+                            <div class="language"><strong>Languages: </strong><span></span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div><strong>Border Countries: </strong></div>
+                        <ul class="countries-list"></ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </template>
 
